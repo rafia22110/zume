@@ -56,7 +56,8 @@ export function TeacherDashboard({
           <button 
             onClick={handleSubmit as any}
             disabled={isAiLoading}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-[#00f2fe] hover:text-white transition-colors disabled:opacity-50"
+            aria-label="Submit AI query"
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-[#00f2fe] hover:text-white transition-colors disabled:opacity-50 focus-visible:ring-2 focus-visible:ring-[#00f2fe] focus-visible:outline-none rounded-lg"
           >
             {isAiLoading ? <RotateCcw className="w-4 h-4 animate-spin" /> : <Sparkles className="w-4 h-4" />}
           </button>
@@ -72,7 +73,8 @@ export function TeacherDashboard({
             <button
               key={task.id}
               onClick={() => onSpawnTask(task.id as any)}
-              className="flex items-center gap-2 p-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all"
+              aria-label={`Spawn ${task.label}`}
+              className="flex items-center gap-2 p-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all focus-visible:ring-2 focus-visible:ring-[#00f2fe] focus-visible:outline-none"
             >
               <task.icon className="w-3 h-3 text-[#00f2fe]" />
               <span className="text-[10px] text-white/70 uppercase tracking-tighter">{task.label}</span>
@@ -82,7 +84,8 @@ export function TeacherDashboard({
 
         <button
           onClick={onResetCamera}
-          className="w-full py-3 rounded-xl bg-[#00f2fe]/10 border border-[#00f2fe]/20 hover:bg-[#00f2fe]/20 text-[#00f2fe] font-display text-[10px] uppercase tracking-widest italic flex items-center justify-center gap-2 transition-all"
+          aria-label="Reset camera view to default"
+          className="w-full py-3 rounded-xl bg-[#00f2fe]/10 border border-[#00f2fe]/20 hover:bg-[#00f2fe]/20 text-[#00f2fe] font-display text-[10px] uppercase tracking-widest italic flex items-center justify-center gap-2 transition-all focus-visible:ring-2 focus-visible:ring-[#00f2fe] focus-visible:outline-none"
         >
           <RotateCcw className="w-3 h-3" />
           Reset View
@@ -140,13 +143,14 @@ export function TeacherDashboard({
           
           <div className="space-y-4 max-h-[50vh] overflow-y-auto pr-4 custom-scrollbar">
             {students.map((student, idx) => (
-              <motion.div
+              <motion.button
                 key={student.id}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: idx * 0.1 }}
                 onClick={() => onFocusStudent(student.id)}
-                className="group relative flex items-center gap-6 p-4 rounded-2xl glass-surface hover:bg-[#00f2fe]/10 transition-all cursor-pointer"
+                aria-label={`Focus on ${student.name}`}
+                className="group relative flex items-center gap-6 p-4 rounded-2xl glass-surface hover:bg-[#00f2fe]/10 transition-all cursor-pointer w-full text-right focus-visible:ring-2 focus-visible:ring-[#00f2fe] focus-visible:outline-none"
               >
                 <span className="font-display text-5xl text-white/10 group-hover:text-[#00f2fe]/20 transition-colors absolute -left-2 top-1/2 -translate-y-1/2">
                   0{student.id}
@@ -176,7 +180,7 @@ export function TeacherDashboard({
                     </div>
                   )}
                 </div>
-              </motion.div>
+              </motion.button>
             ))}
           </div>
         </div>
@@ -206,7 +210,8 @@ export function TeacherDashboard({
               <button
                 type="submit"
                 disabled={isAiLoading}
-                className="absolute left-0 bottom-4 p-2 text-[#00f2fe] hover:scale-110 transition-transform disabled:opacity-50"
+                aria-label="Submit AI query"
+                className="absolute left-0 bottom-4 p-2 text-[#00f2fe] hover:scale-110 transition-transform disabled:opacity-50 focus-visible:ring-2 focus-visible:ring-[#00f2fe] focus-visible:outline-none rounded-lg"
               >
                 {isAiLoading ? <RotateCcw className="w-6 h-6 animate-spin" /> : <Send className="w-6 h-6" />}
               </button>
@@ -225,7 +230,8 @@ export function TeacherDashboard({
                 <button
                   key={item.id}
                   onClick={() => onSpawnTask(item.id as any)}
-                  className="glass-surface p-6 rounded-3xl flex flex-col items-center gap-3 hover:bg-[#00f2fe]/10 hover:border-[#00f2fe]/30 transition-all group"
+                  aria-label={`Spawn ${item.label}`}
+                  className="glass-surface p-6 rounded-3xl flex flex-col items-center gap-3 hover:bg-[#00f2fe]/10 hover:border-[#00f2fe]/30 transition-all group focus-visible:ring-2 focus-visible:ring-[#00f2fe] focus-visible:outline-none"
                 >
                   <Icon className="w-6 h-6 text-[#00f2fe] group-hover:scale-125 transition-transform" />
                   <span className="micro-label text-[8px]">{item.label}</span>
@@ -236,7 +242,8 @@ export function TeacherDashboard({
 
           <button
             onClick={onResetCamera}
-            className="w-full py-5 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 text-white font-display text-sm uppercase tracking-widest italic flex items-center justify-center gap-3 transition-all"
+            aria-label="Reset camera view to default"
+            className="w-full py-5 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 text-white font-display text-sm uppercase tracking-widest italic flex items-center justify-center gap-3 transition-all focus-visible:ring-2 focus-visible:ring-[#00f2fe] focus-visible:outline-none"
           >
             <RotateCcw className="w-4 h-4" />
             איפוס מבט מורה

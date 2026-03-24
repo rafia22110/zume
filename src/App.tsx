@@ -183,7 +183,10 @@ export default function App() {
               </div>
 
               <div className="absolute top-6 right-6 z-20 flex flex-col items-end gap-3">
-                <button className="p-3 bg-black/40 backdrop-blur-md border border-white/10 rounded-full text-white/70 hover:text-white transition-all">
+                <button
+                  aria-label="Maximize view"
+                  className="p-3 bg-black/40 backdrop-blur-md border border-white/10 rounded-full text-white/70 hover:text-white transition-all focus-visible:ring-2 focus-visible:ring-[#00f2fe] focus-visible:outline-none"
+                >
                   <Maximize2 className="w-4 h-4" />
                 </button>
                 
@@ -242,7 +245,13 @@ export default function App() {
                         <h4 className="micro-label text-[#00f2fe] mb-1 italic">AI Assistant</h4>
                         <p className="text-white text-sm leading-relaxed font-body" dir="rtl">{aiResponse}</p>
                       </div>
-                      <button onClick={() => setAiResponse(null)} className="text-white/20 hover:text-white p-1">✕</button>
+                      <button
+                        onClick={() => setAiResponse(null)}
+                        aria-label="Close AI response"
+                        className="text-white/20 hover:text-white p-1 focus-visible:ring-2 focus-visible:ring-[#00f2fe] focus-visible:outline-none rounded-lg"
+                      >
+                        ✕
+                      </button>
                     </div>
                   </motion.div>
                 )}
@@ -260,7 +269,8 @@ export default function App() {
                   <button
                     key={tab.id}
                     onClick={() => setSidebarTab(tab.id as any)}
-                    className={`flex-1 py-4 flex flex-col items-center gap-1 transition-all relative ${
+                    aria-label={`${tab.label} tab`}
+                    className={`flex-1 py-4 flex flex-col items-center gap-1 transition-all relative focus-visible:ring-2 focus-visible:ring-[#00f2fe] focus-visible:outline-none ${
                       sidebarTab === tab.id ? 'text-[#00f2fe]' : 'text-white/40 hover:text-white/60'
                     }`}
                   >
@@ -296,10 +306,11 @@ export default function App() {
 
                     {/* Students */}
                     {students.map(student => (
-                      <div 
+                      <button
                         key={student.id}
                         onClick={() => setFocusedStudentId(student.id)}
-                        className={`p-3 rounded-2xl border transition-all cursor-pointer flex items-center gap-3 ${
+                        aria-label={`Focus on ${student.name}`}
+                        className={`w-full text-right p-3 rounded-2xl border transition-all cursor-pointer flex items-center gap-3 focus-visible:ring-2 focus-visible:ring-[#00f2fe] focus-visible:outline-none ${
                           focusedStudentId === student.id 
                             ? 'bg-[#00f2fe]/10 border-[#00f2fe]/30' 
                             : 'bg-transparent border-transparent hover:bg-white/5'
@@ -325,7 +336,7 @@ export default function App() {
                           {student.isRaisingHand && <Hand className="w-3 h-3 text-yellow-400" />}
                           <Mic className={`w-3 h-3 ${student.isSpeaking ? 'text-[#00f2fe]' : 'text-white/20'}`} />
                         </div>
-                      </div>
+                      </button>
                     ))}
                   </div>
                 )}
@@ -397,7 +408,7 @@ export default function App() {
         <div className="flex items-center gap-6">
           <button 
             onClick={() => setIsMetaverseMode(!isMetaverseMode)}
-            className={`flex items-center gap-2 px-4 py-1.5 rounded-full border transition-all ${
+            className={`flex items-center gap-2 px-4 py-1.5 rounded-full border transition-all focus-visible:ring-2 focus-visible:ring-[#00f2fe] focus-visible:outline-none ${
               isMetaverseMode 
                 ? 'bg-[#00f2fe]/20 border-[#00f2fe]/50 text-[#00f2fe]' 
                 : 'bg-white/5 border-white/10 text-white/60 hover:bg-white/10'
@@ -443,16 +454,25 @@ export default function App() {
       {/* Meet Bottom Control Bar */}
       <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[100] flex items-center gap-4">
         <div className="flex items-center gap-3 bg-black/60 backdrop-blur-2xl border border-white/10 p-2 rounded-full shadow-2xl">
-          <button className="p-4 rounded-full bg-white/5 hover:bg-white/10 text-white transition-all">
+          <button
+            aria-label="Mute/Unmute microphone"
+            className="p-4 rounded-full bg-white/5 hover:bg-white/10 text-white transition-all focus-visible:ring-2 focus-visible:ring-[#00f2fe] focus-visible:outline-none"
+          >
             <Mic className="w-5 h-5" />
           </button>
-          <button className="p-4 rounded-full bg-white/5 hover:bg-white/10 text-white transition-all">
+          <button
+            aria-label="Turn on/off camera"
+            className="p-4 rounded-full bg-white/5 hover:bg-white/10 text-white transition-all focus-visible:ring-2 focus-visible:ring-[#00f2fe] focus-visible:outline-none"
+          >
             <Video className="w-5 h-5" />
           </button>
           
           {/* Reaction Picker */}
           <div className="relative group/reactions">
-            <button className="p-4 rounded-full bg-white/5 hover:bg-white/10 text-white transition-all">
+            <button
+              aria-label="Open reaction picker"
+              className="p-4 rounded-full bg-white/5 hover:bg-white/10 text-white transition-all focus-visible:ring-2 focus-visible:ring-[#00f2fe] focus-visible:outline-none"
+            >
               <Sparkles className="w-5 h-5" />
             </button>
             <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 p-2 bg-black/80 backdrop-blur-xl border border-white/10 rounded-2xl flex gap-2 opacity-0 group-hover/reactions:opacity-100 transition-all pointer-events-none group-hover/reactions:pointer-events-auto">
@@ -460,7 +480,8 @@ export default function App() {
                 <button 
                   key={emoji} 
                   onClick={() => setMyReaction(emoji)}
-                  className="w-10 h-10 rounded-xl hover:bg-white/10 flex items-center justify-center text-xl transition-all hover:scale-125"
+                  aria-label={`React with ${emoji}`}
+                  className="w-10 h-10 rounded-xl hover:bg-white/10 flex items-center justify-center text-xl transition-all hover:scale-125 focus-visible:ring-2 focus-visible:ring-[#00f2fe] focus-visible:outline-none"
                 >
                   {emoji}
                 </button>
@@ -468,19 +489,34 @@ export default function App() {
             </div>
           </div>
 
-          <button className="p-4 rounded-full bg-white/5 hover:bg-white/10 text-white transition-all">
+          <button
+            aria-label="Raise or lower hand"
+            className="p-4 rounded-full bg-white/5 hover:bg-white/10 text-white transition-all focus-visible:ring-2 focus-visible:ring-[#00f2fe] focus-visible:outline-none"
+          >
             <Hand className="w-5 h-5" />
           </button>
-          <button className="p-4 rounded-full bg-white/5 hover:bg-white/10 text-white transition-all">
+          <button
+            aria-label="Present your screen"
+            className="p-4 rounded-full bg-white/5 hover:bg-white/10 text-white transition-all focus-visible:ring-2 focus-visible:ring-[#00f2fe] focus-visible:outline-none"
+          >
             <Monitor className="w-5 h-5" />
           </button>
-          <button className="p-4 rounded-full bg-white/5 hover:bg-white/10 text-white transition-all">
+          <button
+            aria-label="Open chat sidebar"
+            className="p-4 rounded-full bg-white/5 hover:bg-white/10 text-white transition-all focus-visible:ring-2 focus-visible:ring-[#00f2fe] focus-visible:outline-none"
+          >
             <MessageSquare className="w-5 h-5" />
           </button>
-          <button className="p-4 rounded-full bg-white/5 hover:bg-white/10 text-white transition-all">
+          <button
+            aria-label="More meeting options"
+            className="p-4 rounded-full bg-white/5 hover:bg-white/10 text-white transition-all focus-visible:ring-2 focus-visible:ring-[#00f2fe] focus-visible:outline-none"
+          >
             <MoreVertical className="w-5 h-5" />
           </button>
-          <button className="p-4 rounded-full bg-red-500 hover:bg-red-600 text-white transition-all ml-2">
+          <button
+            aria-label="Leave the meeting"
+            className="p-4 rounded-full bg-red-500 hover:bg-red-600 text-white transition-all ml-2 focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none"
+          >
             <PhoneOff className="w-5 h-5" />
           </button>
         </div>
