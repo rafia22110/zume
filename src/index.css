@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Anton", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-[#050508] text-white overflow-hidden selection:bg-[#00f2fe] selection:text-[#050508];
+  }
+}
+
+@layer components {
+  .atmosphere {
+    background: 
+      radial-gradient(circle at 50% 30%, rgba(0, 242, 254, 0.05) 0%, transparent 60%),
+      radial-gradient(circle at 10% 80%, rgba(255, 0, 76, 0.05) 0%, transparent 50%);
+    @apply absolute inset-0 pointer-events-none;
+  }
+
+  .glass-surface {
+    @apply backdrop-blur-[30px] bg-white/[0.03] border border-white/[0.08] shadow-[0_20px_50px_rgba(0,0,0,0.3)];
+  }
+
+  .glass-border {
+    @apply border border-white/[0.1];
+  }
+
+  .display-text {
+    @apply font-display uppercase tracking-tighter leading-[0.85] italic;
+  }
+
+  .micro-label {
+    @apply font-mono text-[10px] uppercase tracking-[0.2em] text-white/40;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 2px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-[#00f2fe]/30 rounded-full;
+  }
+
+  @keyframes slamIn {
+    0% { transform: scale(1.5) translateY(-50px); opacity: 0; }
+    100% { transform: scale(1) translateY(0); opacity: 1; }
+  }
+
+  .animate-slam {
+    animation: slamIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+}
