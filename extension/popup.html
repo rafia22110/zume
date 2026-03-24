@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 320px;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: #050508;
+      color: #fff;
+      padding: 24px;
+      direction: rtl;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .logo {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #00f2fe, #008cff);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 14px;
+      color: #050508;
+    }
+    h1 {
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+    .subtitle {
+      font-size: 10px;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: 2px;
+    }
+    .status {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #444;
+    }
+    .status-dot.active {
+      background: #00ff8c;
+      box-shadow: 0 0 10px #00ff8c;
+    }
+    .status-text {
+      font-size: 12px;
+      color: rgba(255,255,255,0.6);
+    }
+    .btn {
+      width: 100%;
+      padding: 16px;
+      border: none;
+      border-radius: 16px;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #00f2fe, #008cff);
+      color: #050508;
+    }
+    .btn-primary:hover {
+      box-shadow: 0 10px 30px rgba(0,242,254,0.3);
+      transform: translateY(-1px);
+    }
+    .btn-secondary {
+      background: rgba(255,255,255,0.05);
+      color: rgba(255,255,255,0.6);
+      border: 1px solid rgba(255,255,255,0.1);
+      margin-top: 8px;
+    }
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+    }
+    .btn-danger {
+      background: rgba(255,0,76,0.1);
+      color: #ff004c;
+      border: 1px solid rgba(255,0,76,0.2);
+      margin-top: 8px;
+    }
+    .hidden { display: none; }
+    .footer {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 9px;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">3D</div>
+    <div>
+      <h1>Metaverse Classroom</h1>
+      <div class="subtitle">כיתה תלת-ממדית</div>
+    </div>
+  </div>
+
+  <div class="status">
+    <div class="status-dot" id="statusDot"></div>
+    <span class="status-text" id="statusText">לא בשיחת Meet</span>
+  </div>
+
+  <button class="btn btn-primary" id="btnOpen">
+    🚀 פתח כיתה 3D
+  </button>
+  <button class="btn btn-danger hidden" id="btnClose">
+    סגור כיתה 3D
+  </button>
+
+  <div class="footer">Metaverse Classroom v1.0</div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

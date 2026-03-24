@@ -1,20 +1,55 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Metaverse Classroom 3D
 
-# Run and deploy your AI Studio app
+כיתה תלת-ממדית אינטראקטיבית לגוגל מיט. במקום קוביות משעממות - עולם 3D עם אבטרים, משימות, ו-gamification.
 
-This contains everything you need to run your app locally.
+## מה זה עושה
 
-View your app in AI Studio: https://ai.studio/apps/06ff07ae-f475-4cc2-b0a4-0d5b09a8e0b1
+- **אבטרים 3D** - כל תלמיד מיוצג כאבטר תלת-ממדי במקום קוביה שטוחה
+- **כיתה מטאברס** - חלל 3D עם שולחנות, לוח דיגיטלי, וכוכבים
+- **משימות** - מודלים 3D (DNA, מולקולות, גלובוס) עם אינטראקציה
+- **AI Assistant** - סייען הוראה חכם (Gemini API)
+- **Gamification** - XP, רמות, הישגים, ומשימות
+- **צ'אט** - הודעות בזמן אמת
+- **ריאקציות** - אימוג'י, הרמת יד, אינדיקטור דיבור
 
-## Run Locally
+## התקנה (Chrome Extension)
 
-**Prerequisites:**  Node.js
+### אפשרות 1: מקובץ ZIP (מומלץ למורים)
+1. הורד את `metaverse-classroom-extension.zip`
+2. חלץ לתיקייה
+3. פתח `chrome://extensions/`
+4. הפעל "Developer mode" (מצב מפתח)
+5. לחץ "Load unpacked" (טען ללא אריזה)
+6. בחר את התיקייה שחילצת
+7. פתח Google Meet - תראה כפתור 🚀
 
+### אפשרות 2: מתיקיית extension/
+1. `git clone` את הריפו
+2. פתח `chrome://extensions/`
+3. הפעל Developer mode
+4. Load unpacked → בחר תיקיית `extension/`
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## פיתוח
+
+```bash
+npm install
+npm run dev     # שרת פיתוח
+npm run build   # build רגיל
+npx vite build --config vite.extension.config.ts  # build לתוסף
+```
+
+## שימוש
+
+1. פתח Google Meet ‏(meet.google.com)
+2. לחץ על כפתור 🚀 (צף בפינה הימנית)
+3. הכיתה 3D נפתחת כשכבה על Meet
+4. ESC או כפתור ✕ לסגירה
+
+## טכנולוגיות
+
+- React 19 + TypeScript
+- Three.js + React Three Fiber + Drei
+- Tailwind CSS v4
+- Framer Motion
+- Gemini AI API
+- Chrome Extension Manifest V3
